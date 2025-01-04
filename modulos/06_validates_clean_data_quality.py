@@ -6,7 +6,7 @@ import great_expectations as ge
 from datetime import datetime
 from typing import Dict, Any
 
-# Configuração de logging
+# Logging configuration
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 

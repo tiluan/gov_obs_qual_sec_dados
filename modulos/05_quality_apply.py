@@ -79,7 +79,7 @@ def main():
         
         save_to_csv(df, clean_data_path)
         
-        s3_key = 'processed-data/cleaned_data.csv'
+        s3_key = 'processed-data/cleaned_data{end_name[1]}.csv'
         upload_to_s3(clean_data_path, bucket_name, s3_key)
         
         validate_data(df)

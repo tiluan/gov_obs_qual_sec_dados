@@ -1,0 +1,7 @@
+id,nome,idade,salario,faixa_salarial
+1,Mariana,26.0,50000.0,Baixa
+2,Gabriel,22.2,60000.0,Baixa
+3,Carlos,35.0,72000.0,Média
+4,Unknown,28.0,70000.0,Média
+5,Ana,0.0,80000.0,Alta
+7,Helena,22.2,100000.0,Alta
