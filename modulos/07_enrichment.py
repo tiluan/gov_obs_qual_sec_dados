@@ -1,8 +1,6 @@
 import logging
 import os
 import re
-from typing import List
-
 import pandas as pd
 import boto3
 from botocore.exceptions import BotoCoreError, ClientError

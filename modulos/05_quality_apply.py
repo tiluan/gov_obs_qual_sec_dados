@@ -4,7 +4,6 @@ import os
 import re
 import boto3
 import great_expectations as ge
-from typing import List
 
 # Logging configuration
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')

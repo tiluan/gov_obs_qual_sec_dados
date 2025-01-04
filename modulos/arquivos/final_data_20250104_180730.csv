@@ -1,0 +1,7 @@
+id,idade,salario,faixa_salarial,nome_mascarado
+1,26.0,50000.0,Baixa,M******
+2,22.2,60000.0,Baixa,G******
+3,35.0,72000.0,Média,C*****
+4,28.0,70000.0,Média,U******
+5,0.0,80000.0,Alta,A**
+7,22.2,100000.0,Alta,H*****
