@@ -3,6 +3,13 @@ import logging
 from botocore.exceptions import ClientError
 import os
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 def get_latest_file(folder: str) -> str:
     """
     Get the latest modified file in the specified directory.
@@ -32,10 +39,6 @@ except FileNotFoundError as e:
 raw_bucket = 'raw-data'
 object_name = os.path.join(raw_bucket, last_file)
 s3 = boto3.client('s3')
-
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
 
 # Função para verificar se o bucket existe
 def check_create_bucket(bucket_name: str, region: str):

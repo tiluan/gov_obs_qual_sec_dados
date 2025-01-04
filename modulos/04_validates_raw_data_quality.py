@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 import pandas as pd
 import great_expectations as ge
 from datetime import datetime
@@ -151,7 +152,7 @@ def generate_html_report(results: dict, output_path: str):
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html_content)
     
-    logger.info(f"Relatório HTML corporativo aprimorado gerado com sucesso: {output_path}")
+    logger.info(f"Enhanced corporate HTML report successfully generated: {output_path}")
 
 def main():
     try:
@@ -172,20 +173,21 @@ def main():
         
         # Extract base filename without extension
         base_filename = os.path.splitext(os.path.basename(file_path))[0]
+        end_name = re.findall(r'[0-9_]+', base_filename)
         
         # Generate HTML report
-        report_path = os.path.join(full_path, f"relatorio_validacao_{base_filename}.html")
+        report_path = os.path.join(full_path, f"validation_report{end_name[1]}.html")
         generate_html_report(results, report_path)
         
         if not results["success"]:
-            logger.warning("Problemas encontrados na validação de qualidade. Relatório gerado.")
+            logger.warning("Problems found in quality validation. Report generated.")
         else:
-            logger.info("Nenhum problema de qualidade detectado.")
+            logger.info("No quality issues detected.")
         
     except FileNotFoundError as e:
-        logger.error(f"Arquivo não encontrado: {str(e)}")
+        logger.error(f"File not found: {str(e)}")
     except Exception as e:
-        logger.error(f"Falha ao processar métricas de observabilidade: {str(e)}")
+        logger.error(f"Failed to process observability metrics: {str(e)}")
 
 if __name__ == "__main__":
     main()

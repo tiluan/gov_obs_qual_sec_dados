@@ -8,11 +8,7 @@ import os
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('data_processing.log'),
-        logging.StreamHandler()
-    ]
+    format='%(asctime)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
 
@@ -50,7 +46,7 @@ def main():
         # Save data
         dir = os.path.dirname(os.path.abspath(__file__))
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_path = os.path.join(dir, f"arquivos/dados_processados_{timestamp}.csv")
+        output_path = os.path.join(dir, f"arquivos/processed_data_{timestamp}.csv")
         save_dataframe(df_raw, output_path)
         
     except Exception as e:

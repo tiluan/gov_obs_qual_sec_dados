@@ -1,5 +1,6 @@
 import logging
 import json
+import re
 import pandas as pd
 import os
 import boto3
@@ -77,10 +78,11 @@ def save_observability_metrics(metrics, file_path, bucket_name):
     
     # Extract base filename without extension
     base_filename = os.path.splitext(os.path.basename(file_path))[0]
+    end_name = re.findall(r'[0-9_]+', base_filename)
     
     # Construct output paths
-    local_path = os.path.join(output_dir, f'observabilidade_{base_filename}.json')
-    s3_path = f'observabilidade/{base_filename}.json'
+    local_path = os.path.join(output_dir, f'observability{end_name[1]}.json')
+    s3_path = f'observability/{base_filename}.json'
     
     # Save locally
     try:
