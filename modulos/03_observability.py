@@ -1,9 +1,9 @@
 import logging
 import json
-import boto3
-from botocore.exceptions import ClientError
 import pandas as pd
 import os
+import boto3
+from botocore.exceptions import ClientError
 
 # Configure logging
 logging.basicConfig(
@@ -13,30 +13,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def get_latest_file(folder: str) -> str:
-    """
-    Get the latest modified file in the specified directory.
-    
-    Args:
-        directory (str): The directory to search for files.
-        
-    Returns:
-        str: The path to the latest modified file.
-    """
-    files = [os.path.join(folder, f) for f in os.listdir(folder) if os.path.isfile(os.path.join(folder, f))]
+    """Get the latest modified CSV file in the specified directory."""
+    files = [os.path.join(folder, f) for f in os.listdir(folder) if os.path.isfile(os.path.join(folder, f)) and f.endswith('.csv')]
     if not files:
-        raise FileNotFoundError(f"Nenhum arquivo encontrado na pasta: {folder}")
+        raise FileNotFoundError(f"No CSV files found in the folder: {folder}")
     latest_file = max(files, key=os.path.getmtime)
     return os.path.basename(latest_file)
-
-# Configuration
-bucket_name = 'data-lake-p6-890447484968'
-region = 'us-east-2'
-folder = 'arquivos'
-try:
-    last_file = get_latest_file(folder)
-    file_path = os.path.join(folder, last_file)
-except FileNotFoundError as e:
-    print(e)
 
 def validate_dataframe(df):
     """Validate if DataFrame is not empty and has expected structure"""
@@ -86,15 +68,25 @@ def calculate_observability_metrics(df):
         logger.error(f"Error calculating observability metrics: {str(e)}")
         raise
 
-def save_observability_metrics(metrics, local_path='arquivos/observabilidade.json', 
-                             bucket_name=bucket_name,
-                             s3_path='observabilidade/observabilidade_inicial.json'):
+def save_observability_metrics(metrics, file_path, bucket_name):
     """Save metrics locally and to S3 with error handling"""
+    
+    # Create output directory if it doesn't exist
+    output_dir = 'arquivos'
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Extract base filename without extension
+    base_filename = os.path.splitext(os.path.basename(file_path))[0]
+    
+    # Construct output paths
+    local_path = os.path.join(output_dir, f'observabilidade_{base_filename}.json')
+    s3_path = f'observabilidade/{base_filename}.json'
+    
     # Save locally
     try:
         with open(local_path, 'w') as f:
             json.dump(metrics, f, indent=4)
-        logger.info("Observability metrics saved locally")
+        logger.info(f"Observability metrics saved locally to {local_path}")
     except IOError as e:
         logger.error(f"Error saving local file: {str(e)}")
         raise
@@ -103,16 +95,36 @@ def save_observability_metrics(metrics, local_path='arquivos/observabilidade.jso
     try:
         s3 = boto3.client('s3')
         s3.upload_file(local_path, bucket_name, s3_path)
-        logger.info("Observability metrics uploaded to S3 successfully")
+        logger.info(f"Observability metrics uploaded to S3 as {s3_path}")
     except ClientError as e:
         logger.error(f"Error uploading to S3: {str(e)}")
         raise
 
-# Main execution
-try:
-    df = pd.read_csv(file_path)
-    metrics = calculate_observability_metrics(df)
-    save_observability_metrics(metrics, bucket_name)
-except Exception as e:
-    logger.error(f"Failed to process observability metrics: {str(e)}")
-    raise
+if __name__ == "__main__":
+    try:
+        # Configuration
+        bucket_name = 'data-lake-p6-890447484968'
+        region = 'us-east-2'
+        folder = 'arquivos'
+        
+        # Create folder if it doesn't exist
+        os.makedirs(folder, exist_ok=True)
+               
+        try:
+            dir = os.path.dirname(os.path.abspath(__file__))
+            full_path = os.path.join(dir, folder)
+            last_file = get_latest_file(full_path)
+            file_path = os.path.join(full_path, last_file)
+            
+            df = pd.read_csv(file_path)
+            metrics = calculate_observability_metrics(df)
+            print(metrics)
+            save_observability_metrics(metrics, file_path, bucket_name)
+            
+        except FileNotFoundError as e:
+            logger.error(f"File not found: {str(e)}")
+            raise
+            
+    except Exception as e:
+        logger.error(f"Failed to process observability metrics: {str(e)}")
+        raise
