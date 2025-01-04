@@ -1,7 +1,7 @@
 # Projeto: Governança de Dados com Docker e AWS
 
 ## Descrição
-Este projeto implementa uma robusta pipeline de dados para garantir a governança e automação de processos essenciais. Ele abrange etapas que incluem geração de dados de amostra, upload seguro para S3, validação de qualidade, enriquecimento com novas informações e mascaramento de dados sensíveis para conformidade com regulações.
+Este projeto implementa uma pipeline de dados para garantir a governança e automação de processos. Ele abrange etapas que incluem geração de dados de amostra, upload para S3, validação de qualidade, observabilidade, enriquecimento com novas informações e mascaramento de dados sensíveis para conformidade com regulações.
 
 ## Requisitos
 - Docker: Para conteinerização do ambiente.
