@@ -99,6 +99,6 @@ python {nome_do_arquivo}.py
 - `pipeline_load_full.sh`: Orquestra a execução de todos os scripts na sequência correta.
 
 ## Logs e Monitoramento
-Os eventos de execução serão registrados em `pipeline_execution.log`. 
+Os eventos de execução serão registrados em `pipeline_execution.log`.
 
 Utilize este arquivo para rastrear operações, identificar erros e realizar depuração.
