@@ -1,0 +1,8 @@
+id,nome,idade,salario
+1,Mariana,26,50000.0
+2,Gabriel,,60000.0
+3,Carlos,35,
+4,,28,70000.0
+5,Ana,-6,80000.0
+seis,Francisco,40,90000.0
+7,Helena,unknown,100000.0

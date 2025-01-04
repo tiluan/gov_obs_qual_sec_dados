@@ -1,0 +1,56 @@
+{
+    "total_linhas": 7,
+    "colunas": [
+        "id",
+        "nome",
+        "idade",
+        "salario"
+    ],
+    "colunas_nulas": {
+        "id": 0,
+        "nome": 1,
+        "idade": 1,
+        "salario": 1
+    },
+    "tipos_dados": {
+        "id": "object",
+        "nome": "object",
+        "idade": "object",
+        "salario": "float64"
+    },
+    "estatisticas_quantitativas": {
+        "salario": {
+            "count": 6.0,
+            "mean": 75000.0,
+            "std": 18708.286933869706,
+            "min": 50000.0,
+            "25%": 62500.0,
+            "50%": 75000.0,
+            "75%": 87500.0,
+            "max": 100000.0
+        }
+    },
+    "estatisticas_categoricas": {
+        "id": {
+            "total": 7,
+            "valores_unicos": 7,
+            "valor_mais_frequente": "1",
+            "categorias_unicas": 7,
+            "frequencia_do_valor_mais_frequente": 1
+        },
+        "nome": {
+            "total": 6,
+            "valores_unicos": 6,
+            "valor_mais_frequente": "Ana",
+            "categorias_unicas": 6,
+            "frequencia_do_valor_mais_frequente": 1
+        },
+        "idade": {
+            "total": 6,
+            "valores_unicos": 6,
+            "valor_mais_frequente": "-6",
+            "categorias_unicas": 6,
+            "frequencia_do_valor_mais_frequente": 1
+        }
+    }
+}

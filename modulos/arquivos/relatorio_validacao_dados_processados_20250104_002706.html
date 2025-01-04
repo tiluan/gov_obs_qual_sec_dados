@@ -1,0 +1,172 @@
+
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Relatório de Validação de Qualidade</title>
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f0f2f5;
+                color: #333;
+                line-height: 1.6;
+            }
+            .container {
+                max-width: 900px;
+                margin: 40px auto;
+                background: #fff;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+            h1, h2, h3 {
+                color: #2c3e50;
+                margin-top: 0;
+            }
+            h1 {
+                border-bottom: 2px solid #3498db;
+                padding-bottom: 10px;
+                margin-bottom: 20px;
+            }
+            .status {
+                font-size: 1.2em;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .success {
+                background-color: #d4edda;
+                color: #155724;
+                border: 1px solid #c3e6cb;
+            }
+            .failure {
+                background-color: #f8d7da;
+                color: #721c24;
+                border: 1px solid #f5c6cb;
+            }
+            .validation-item {
+                background-color: #e9ecef;
+                border-left: 4px solid #3498db;
+                padding: 15px;
+                margin-bottom: 15px;
+                border-radius: 0 5px 5px 0;
+            }
+            .validation-item h3 {
+                margin-top: 0;
+                color: #3498db;
+            }
+            ul {
+                list-style-type: none;
+                padding-left: 0;
+            }
+            li {
+                margin: 5px 0;
+            }
+            .footer {
+                text-align: center;
+                margin-top: 30px;
+                padding-top: 20px;
+                border-top: 1px solid #e9ecef;
+                font-size: 0.9em;
+                color: #7f8c8d;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Relatório de Validação de Qualidade</h1>
+            <div class="status failure">
+                ❌ Foram encontrados problemas na validação dos dados.
+            </div>
+            <h2>Detalhes das Validações:</h2>
+            
+            <div class="validation-item">
+                <h3>expect_column_to_exist</h3>
+                <ul>
+                    <li><strong>Coluna:</strong> id</li>
+                    <li><strong>Sucesso:</strong> ✅ Sim</li>
+                    <li><strong>Observado:</strong> N/A</li>
+                </ul>
+            </div>
+            
+            <div class="validation-item">
+                <h3>expect_column_values_to_be_of_type</h3>
+                <ul>
+                    <li><strong>Coluna:</strong> id</li>
+                    <li><strong>Sucesso:</strong> ❌ Não</li>
+                    <li><strong>Observado:</strong> N/A</li>
+                </ul>
+            </div>
+            
+            <div class="validation-item">
+                <h3>expect_column_values_to_not_be_null</h3>
+                <ul>
+                    <li><strong>Coluna:</strong> id</li>
+                    <li><strong>Sucesso:</strong> ✅ Sim</li>
+                    <li><strong>Observado:</strong> N/A</li>
+                </ul>
+            </div>
+            
+            <div class="validation-item">
+                <h3>expect_column_to_exist</h3>
+                <ul>
+                    <li><strong>Coluna:</strong> idade</li>
+                    <li><strong>Sucesso:</strong> ✅ Sim</li>
+                    <li><strong>Observado:</strong> N/A</li>
+                </ul>
+            </div>
+            
+            <div class="validation-item">
+                <h3>expect_column_values_to_be_between</h3>
+                <ul>
+                    <li><strong>Coluna:</strong> idade</li>
+                    <li><strong>Sucesso:</strong> ❌ Não</li>
+                    <li><strong>Observado:</strong> N/A</li>
+                </ul>
+            </div>
+            
+            <div class="validation-item">
+                <h3>expect_column_to_exist</h3>
+                <ul>
+                    <li><strong>Coluna:</strong> salario</li>
+                    <li><strong>Sucesso:</strong> ✅ Sim</li>
+                    <li><strong>Observado:</strong> N/A</li>
+                </ul>
+            </div>
+            
+            <div class="validation-item">
+                <h3>expect_column_values_to_be_between</h3>
+                <ul>
+                    <li><strong>Coluna:</strong> salario</li>
+                    <li><strong>Sucesso:</strong> ✅ Sim</li>
+                    <li><strong>Observado:</strong> N/A</li>
+                </ul>
+            </div>
+            
+            <div class="validation-item">
+                <h3>expect_column_to_exist</h3>
+                <ul>
+                    <li><strong>Coluna:</strong> nome</li>
+                    <li><strong>Sucesso:</strong> ✅ Sim</li>
+                    <li><strong>Observado:</strong> N/A</li>
+                </ul>
+            </div>
+            
+            <div class="validation-item">
+                <h3>expect_column_values_to_not_be_null</h3>
+                <ul>
+                    <li><strong>Coluna:</strong> nome</li>
+                    <li><strong>Sucesso:</strong> ❌ Não</li>
+                    <li><strong>Observado:</strong> N/A</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                <p>Relatório gerado automaticamente em 04/01/2025 às 14:27:47</p>
+            </div>
+        </div>
+    </body>
+    </html>
+    
